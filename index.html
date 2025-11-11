@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Obrigado pela compra | NeuroHack ENEM 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #060606;
+        --accent: #d4af37;
+        --text: #f4f4f4;
+        --muted: rgba(244, 244, 244, 0.72);
+        --card-bg: rgba(20, 20, 20, 0.85);
+        --border: rgba(212, 175, 55, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, rgba(212, 175, 55, 0.08) 0%, rgba(6, 6, 6, 1) 45%);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 16px;
+      }
+
+      main {
+        width: 100%;
+        max-width: 960px;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 48px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      header h1 {
+        font-size: clamp(2rem, 3vw + 1rem, 3rem);
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.04em;
+      }
+
+      header p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      .stamp {
+        align-self: center;
+        padding: 12px 28px;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        font-size: 0.95rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(212, 175, 55, 0.08);
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 56px;
+      }
+
+      .section-title {
+        font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+        color: var(--accent);
+        text-align: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        color: var(--muted);
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .card {
+        padding: 28px;
+        border-radius: 18px;
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        background: rgba(10, 10, 10, 0.6);
+        transition: transform 0.3s ease, border 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-6px);
+        border-color: var(--accent);
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+        color: var(--accent);
+        margin: 0;
+        letter-spacing: 0.03em;
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        border: 1px solid rgba(212, 175, 55, 0.6);
+        background: linear-gradient(140deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.05));
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        box-shadow: inset 0 0 0 1px rgba(6, 6, 6, 0.65);
+      }
+
+      .card p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .stat-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .stat-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+        background: rgba(12, 12, 12, 0.7);
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        text-align: center;
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 8px;
+      }
+
+      .quote-card {
+        padding: 24px 28px;
+        border-left: 3px solid var(--accent);
+        background: rgba(10, 10, 10, 0.55);
+        border-radius: 18px;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .quote-card strong {
+        color: var(--accent);
+      }
+
+      .feature-list {
+        list-style: none;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        padding: 0;
+      }
+
+      .feature-list li {
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: rgba(8, 8, 8, 0.7);
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        color: var(--muted);
+        font-size: 0.96rem;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 48px;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: rgba(212, 175, 55, 0.12);
+        border: 1px solid rgba(212, 175, 55, 0.38);
+        color: var(--accent);
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        align-self: center;
+      }
+
+      .cta {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .cta a {
+        align-self: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 40px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(120deg, rgba(212, 175, 55, 1), rgba(134, 96, 12, 1));
+        color: var(--bg-color);
+        font-weight: 600;
+        font-size: 1.05rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .cta a:hover,
+      .cta a:focus-visible {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 18px 40px rgba(212, 175, 55, 0.35);
+      }
+
+      .cta p {
+        font-size: 0.95rem;
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
+      footer {
+        margin-top: 48px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: rgba(244, 244, 244, 0.5);
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          padding: 32px 22px;
+        }
+
+        .card {
+          padding: 24px;
+          gap: 12px;
+        }
+
+        .feature-list {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-list li {
+          padding-left: 44px;
+        }
+
+        .stat-value {
+          font-size: 1.6rem;
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          margin-bottom: 42px;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
+          letter-spacing: 0.06em;
+        }
+
+        .card-header {
+          gap: 14px;
+        }
+
+        .card-icon {
+          width: 42px;
+          height: 42px;
+          font-size: 1.2rem;
+        }
+
+        .card p {
+          font-size: 0.94rem;
+        }
+
+        .quote-card {
+          padding: 20px 22px;
+          font-size: 0.95rem;
+        }
+
+        .cta a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="stamp">NeuroHack ENEM 2025</div>
+      <header>
+        <h1>Obrigado pela sua confiança!</h1>
+        <p>
+          Sua compra foi confirmada e o acesso ao aplicativo <strong>NeuroHack ENEM 2025</strong>
+          já está liberado. Você acaba de destravar o método acelerado que prepara você com base
+          nos padrões reais das provas anteriores.
+        </p>
+      </header>
+
+      <section class="section" aria-label="Resultados comprovados">
+        <span class="badge">Resultados comprovados</span>
+        <h2 class="section-title">Você agora faz parte da elite NeuroHack</h2>
+        <p class="section-subtitle">
+          O método que você acabou de liberar já transformou procrastinadores em aprovados em tempo
+          recorde. São 25 anos de padrões do ENEM decodificados para acelerar sua aprovação sem
+          desperdício de energia.
+        </p>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-value">15.247</span>
+            <span class="stat-label">Vestibulandos aprovados</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">94,7%</span>
+            <span class="stat-label">Taxa de sucesso entre os usuários</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">+287</span>
+            <span class="stat-label">Pontos de aumento médio nas provas</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">89%</span>
+            <span class="stat-label">Redução de ansiedade na véspera</span>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          “Aumentei 340 pontos em 2 dias usando só os padrões.” <strong>Maria Santos</strong>,
+          aprovada em Medicina na UFMG.
+        </div>
+      </section>
+
+      <section class="section" aria-label="Pilares do NeuroHack ENEM 2025">
+        <h2 class="section-title">O que você acabou de desbloquear</h2>
+        <p class="section-subtitle">
+          Em apenas 12 horas, você domina os padrões que se repetem ano após ano e neutraliza a
+          curva do esquecimento com suporte inteligente 24/7.
+        </p>
+
+        <div class="grid card-grid">
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#8721;</span>
+              <h3>10 Padrões Matemáticos</h3>
+            </div>
+            <p>
+              78% das questões resolvidas com mapas mentais e atalhos estratégicos que aceleram seu
+              raciocínio.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#9776;</span>
+              <h3>5 Estruturas de Linguagens</h3>
+            </div>
+            <p>
+              Domine os formatos que mais caem em interpretação de texto e garanta consistência nas
+              respostas.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#9883;</span>
+              <h3>12 Fórmulas Científicas Essenciais</h3>
+            </div>
+            <p>
+              Fórmulas e macetes para Ciências da Natureza com aplicação imediata e revisões
+              inteligentes.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#10024;</span>
+              <h3>3 Modelos Nota 1000</h3>
+            </div>
+            <p>
+              Templates de redação com repertório sociocultural pronto e intervenção estratégica
+              infalível.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#128187;</span>
+              <h3>IA de Diagnóstico</h3>
+            </div>
+            <p>
+              Inteligência artificial que prevê quando você vai esquecer e dispara revisões na hora
+              certa.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#8635;</span>
+              <h3>Spaced Repetition</h3>
+            </div>
+            <p>
+              Sistema de revisão automática que anula a curva de Ebbinghaus e mantém tudo fresco na
+              memória.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#127919;</span>
+              <h3>Técnicas de Chute Estratégico</h3>
+            </div>
+            <p>
+              Métodos avançados para eliminar alternativas com 90% de precisão e ganhar pontos
+              decisivos.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#9788;</span>
+              <h3>Controle Emocional</h3>
+            </div>
+            <p>
+              Protocolos neurológicos que transformam ansiedade em foco laser no dia da prova.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Abas premium da plataforma">
+        <h2 class="section-title">Abas premium para dominar o ENEM</h2>
+        <p class="section-subtitle">
+          Explore cada área do aplicativo para acelerar seus resultados e acompanhar sua evolução em
+          tempo real.
+        </p>
+
+        <div class="grid card-grid">
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#128200;</span>
+              <h3>Dashboard Inteligente</h3>
+            </div>
+            <p>
+              Painel com indicadores de progresso, tempo focado e previsão de desempenho por área de
+              conhecimento.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#9201;</span>
+              <h3>Simulador de Prova</h3>
+            </div>
+            <p>
+              Ambiente idêntico ao ENEM com cronômetro, espelho de gabarito e análise pós-prova
+              detalhada.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#128202;</span>
+              <h3>Analytics Avançado</h3>
+            </div>
+            <p>
+              Relatórios profundos que mostram seus padrões de acerto, temas recorrentes e gaps de
+              estudo.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#129302;</span>
+              <h3>Assistente IA 24/7</h3>
+            </div>
+            <p>
+              Tutor inteligente para tirar dúvidas, ajustar o cronograma e recomendar missões
+              personalizadas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Bônus exclusivos NeuroHack">
+        <span class="badge">Bônus liberados</span>
+        <h2 class="section-title">Bônus premium incluídos na sua compra</h2>
+        <p class="section-subtitle">
+          Aproveite todos os materiais complementares que potencializam sua preparação e deixam você
+          pronto para qualquer surpresa.
+        </p>
+
+        <ul class="feature-list">
+          <li>Kit SOS Véspera da Prova com checklists e rotinas para as últimas 48 horas.</li>
+          <li>50 Questões que Mais Caem com explicações passo a passo e gabaritos comentados.</li>
+          <li>Meditação Foco Laser para ativar estado de alta performance em minutos.</li>
+          <li>Grupo VIP no Telegram com alertas diários, novidades e suporte direto da equipe.</li>
+          <li>
+            8 E-books exclusivos: Redação Nota 1000, Técnicas de Chutes, Hacks de Linguagens e mais.
+          </li>
+          <li>
+            Cronograma dos Últimos Dias com revisão express de 240 tópicos realmente frequentes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-label="Garantias NeuroHack ENEM 2025">
+        <h2 class="section-title">Garantia tripla blindada</h2>
+        <p class="section-subtitle">
+          O risco é zero para você. Siga o passo a passo e, se o método não entregar evolução real,
+          nós assumimos o prejuízo.
+        </p>
+
+        <div class="grid card-grid">
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#128736;</span>
+              <h3>Foco Imediato</h3>
+            </div>
+            <p>
+              Se em 24 horas você não conseguir manter 2 horas de estudo focado, reembolsamos 100%
+              do valor.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#9200;</span>
+              <h3>Evolução em 48h</h3>
+            </div>
+            <p>
+              Não viu melhora nos simulados em dois dias? Devolvemos tudo e damos R$ 50 pelo seu
+              tempo.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">&#128737;</span>
+              <h3>Aprovação Garantida</h3>
+            </div>
+            <p>
+              Cumpriu todo o sistema e mesmo assim não passou? Receba o dobro do investimento de
+              volta.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta" aria-label="Acesso ao aplicativo">
+        <a href="https://neurohack-enem-final.vercel.app/" target="_blank" rel="noopener noreferrer">
+          Acessar agora o NeuroHack
+        </a>
+        <p>
+          Um e-mail com as instruções de login, chaves de acesso premium e links de download acabou
+          de ser enviado. Verifique também as pastas de spam ou promoções para garantir o
+          recebimento.
+        </p>
+        <p>
+          Dica: comece pelo <strong>Dashboard Inteligente</strong>, ative o <strong>Simulador de Prova</strong>
+          e finalize o dia com a <strong>Meditação Foco Laser</strong> para consolidar resultados.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Precisa de ajuda?
+      <a href="mailto:suporte@neurohack.app">suporte@neurohack.app</a>
+      ·
+      <a href="https://neurohack.app/politica" target="_blank" rel="noopener noreferrer">
+        Política de Privacidade
+      </a>
+    </footer>
+  </body>
+</html>
+
